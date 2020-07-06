@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+
+src/portfolio_media
+static-serve
