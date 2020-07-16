@@ -46,7 +46,8 @@ class ContactMe(APIView):
         if serializer.is_valid(raise_exception=True):
             #store the info in the database
             serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
+            message= "success"
+            return Response({message},status=status.HTTP_201_CREATED)
         else:
             errors = serializer.errors
             return Response(errors, status=status.HTTP_400_BAD_REQUEST)

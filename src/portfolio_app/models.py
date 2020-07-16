@@ -47,3 +47,8 @@ class ContactMe(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
     message =models.TextField(max_length=1000, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'contact_me'
+        verbose_name_plural = "Submited contact form"
