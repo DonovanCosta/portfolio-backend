@@ -37,12 +37,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'portfolio_app'
+    'portfolio_app',
+    'ckeditor',
+    'ckeditor_uploader',
+    'rest_framework',
+    'corsheaders'
 ]
+
+CKEDITOR_UPLOAD_PATH = "project/"
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -128,11 +137,8 @@ STATICFILES_DIRS = [
     # will not be served
     os.path.join(os.path.dirname(BASE_DIR), "static-storage"),
 ]
-print("STATICFILES_DIRS path ", STATICFILES_DIRS)
 
-#base dir path  /vagrant/src/socol
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static-serve")  # CDN in production env
-print("STATIC_ROOT path ", STATIC_ROOT)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'portfolio_media/')

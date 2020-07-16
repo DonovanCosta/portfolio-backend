@@ -3,3 +3,4 @@ __pycache__/
 
 src/portfolio_media
 static-serve
+**/migrations
