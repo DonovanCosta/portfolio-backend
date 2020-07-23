@@ -142,3 +142,53 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static-serve")  # CDN in 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'portfolio_media/')
+
+#django example code configuration - modified for our use case 
+# https://docs.djangoproject.com/en/2.1/topics/logging/#examples
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+        '()': 'django.utils.log.RequireDebugFalse',
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'mail_admins': {
+        'level': 'ERROR',
+        'filters': ['require_debug_false'],
+        'class': 'django.utils.log.AdminEmailHandler',
+        'email_backend':'django.core.mail.backends.smtp.EmailBackend'
+    }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        }
+    }
+}
