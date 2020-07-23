@@ -1,7 +1,7 @@
 __pycache__/
 *.py[cod]
 
-src/settings/local.py
+src/portfolio/settings/local.py
 src/portfolio_media
 static-serve
 **/migrations
